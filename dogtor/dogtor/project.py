@@ -6,14 +6,19 @@ import argparse
 def create(project_name: str) -> None:
     """
     Description:
+    ------------
         This function creates a new poetry project and installs the required dependencies.
     
     Args:
+    -----
         project_name -- the name of the project to be created
     
     Returns:
+    --------
         None
     """
+    if project_name is None:
+        raise ValueError('Project name is required!')
     # 1.0 Activate the virtual environment and then install poetry
     subprocess.Popen(['python', '-m', 'pip', 'install', 'poetry']).wait()
     # 2.0 Create a new poetry project
