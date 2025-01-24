@@ -1,7 +1,7 @@
 import os
 import subprocess
 import argparse
-from .utils import ContexDirectory
+from utils import ContexDirectory
 
 def create(project_name: str,
            path: str='.',
@@ -48,17 +48,20 @@ def create(project_name: str,
         else:
             print('requirements.txt file not found!')
         # 5.0 Create the sphinx documentation
-        subprocess.Popen(['sphinx-quickstart',
-                        '-q',
-                        '-p',f'{project_name}',
-                        '-a', 'Author',
-                        '-v', '1.0',
-                        '-d', 'docs',
-                        '-r', '1.0',
-                        '-l', 'en',
-                        '--sep']).wait()
-        print('Dependency added and installed!')
-        # Return control to the main process
+        if not os.path.exists(os.path.join(os.getcwd(),'docs')):
+            os.mkdir('docs')
+        with ContexDirectory('docs'):
+            subprocess.Popen(['sphinx-quickstart',
+                            '-q',
+                            '-p',f'{project_name}',
+                            '-a', 'Author',
+                            '-v', '1.0',
+                            '-d', 'docs',
+                            '-r', '1.0',
+                            '-l', 'en',
+                            '--sep']).wait()
+            print('Dependency added and installed!')
+            # Return control to the main process
 
 
 if __name__ == '__main__':

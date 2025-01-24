@@ -14,3 +14,9 @@ Once your initial scaffolding is done, dogtor is out of the way and you can cont
 ```bash
 pip install dogtor
 ```
+
+## Usage
+
+```bash
+dogtor -e myenv -p
+```
