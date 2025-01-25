@@ -42,14 +42,11 @@ def flash(project_name: str,
         # Check if requirements.txt file exists
         if requirements is not None:
             if os.path.isfile(requirements):
-                print(requirements)
                 # take all the packages from the requirements.txt and install it to the virtual environment
                 with open(requirements, 'r') as f:
                     for line in f:
                         subprocess.Popen(['poetry', 'add', line.strip()]).wait()
-
                 subprocess.Popen(['poetry', 'install']).wait()
-
                 print('Dependency added and installed!')
             else:
                 print('requirements.txt file not found!')
