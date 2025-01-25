@@ -3,8 +3,8 @@
 Dogtor is a simple package to scaffold your Python project. Using Dogtor you can:
 
 - Create a new Python environment using `venv`.
-- Scaffold a new Python package project using Poetry.
-- Start your project with Sphinx documentation already set up.
+- Scaffold a new Python package project using `Poetry`.
+- Start your project with `Sphinx` documentation already set up.
 - Install a list of packages you want to start with in your environment.
 - Generate a GitLab CI/CD configuration file.
 
