@@ -3,9 +3,12 @@ import subprocess
 import argparse
 from dogtor.utils import ContexDirectory, create_gitlab_ci
 
-def create(project_name: str,
-           path: str='.',
-           requirements: str='.') -> None:
+def flash(project_name: str,
+           requirements: str='.',
+           cicd: str='gitlab') -> None:
+    print(f"Project Name: {project_name}")
+    print(f"Requirements: {requirements}")
+    print(f"CI/CD: {cicd}")
     """
     Description:
     ------------
@@ -67,8 +70,8 @@ def create(project_name: str,
                             '--sep']).wait()
             print('Dependency added and installed!')
         # 6.0 Create the gitlab-ci.yml file
-            if args.cicd is not None:
-                if args.cicd == 'gitlab':
+            if cicd is not None:
+                if cicd == 'gitlab':
                     with ContexDirectory(os.path.join(folder_path,project_name)):
                         create_gitlab_ci()
                 else:
@@ -77,12 +80,15 @@ def create(project_name: str,
                 print('No option provided!')
             # Return control to the main process
 
-
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser(description='Setup poetry project.')
-    parser.add_argument('-p', '--project_name', type=str, help='The name of the project')
+    parser.add_argument('-p', '--project_name', type=str, help='The name of the project', nargs='?')
     parser.add_argument('-r', '--requirements', type=str, help='The path of the requirements file', nargs='?')
     parser.add_argument('-ci', '--cicd', type=str, help='Create a gitlab-ci.yml file', nargs='?')
     args = parser.parse_args()
-    create(project_name=args.project_name, 
-           requirements=args.requirements)
+    flash(project_name=str(args.project_name), requirements=args.requirements, cicd=args.cicd)
+
+    
+if __name__ == '__main__':
+    main()
+
