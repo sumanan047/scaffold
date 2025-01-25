@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "dogtor"
 version = "0.2.0"
-description = "Python project and environment generator"
+description = "Python project scaffolding tool."
 authors = ["Suman Saurabh <sumanan047@gmail.com>"]
 readme = "README.md"
 
