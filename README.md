@@ -25,6 +25,7 @@ pip install dogtor
 ```bash
 dogtor-env -e "project_python_env"
 ```
+
 This command creates a virtual environment named `project_python_env`.  Remember to activate it before using Dogtor to create your project.
 
 > Activate the virtual environment
